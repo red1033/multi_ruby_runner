@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jo Hund"]
   spec.email         = ["jhund@clearcove.ca"]
   spec.summary       = %q{Execute Ruby code in different Ruby environments.}
-  spec.description   = %q{This gem lets you for example call JRuby code from MRI. It relies on rbenv or RVM to manage the Ruby runtime environment.}
+  spec.description   = %q{Execute Ruby code in different Ruby environments. This gem lets you for example call JRuby code from MRI. It relies on rbenv or RVM to manage the Ruby runtime environment.}
   spec.homepage      = "https://github.com/jhund/multi_ruby_runner"
   spec.license       = "MIT"
 
