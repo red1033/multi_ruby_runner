@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 require "multi_ruby_runner/version"
-require 'multi_ruby_runner'
 require 'multi_ruby_runner/version_manager'
 require 'multi_ruby_runner/version_manager/none'
 require 'multi_ruby_runner/version_manager/rbenv'
