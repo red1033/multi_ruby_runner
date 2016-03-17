@@ -15,6 +15,7 @@ class MultiRubyRunner
       def compute_process_args(command_string, directory, options)
         shell_command_string = [
           "cd #{ directory }", # cd into the directory containing .ruby-version file
+          %(eval "$(rbenv init -)"), # let rbenv update the environment (particularly PATH)
           command_string, # execute command
         ].join('; ')
         # For rbenv we just have to reset RBENV_VERSION and override RBENV_DIR
