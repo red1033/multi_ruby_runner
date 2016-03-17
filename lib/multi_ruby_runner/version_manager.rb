@@ -22,8 +22,8 @@ class MultiRubyRunner
       @ruby_executable_path = ruby_executable_path
     end
 
-    def activation_string
-      raise "Implement #activation_string in subclasses!"
+    def compute_process_args(command_string, directory, options)
+      raise "Implement #compute_process_args in subclasses!"
     end
 
   end

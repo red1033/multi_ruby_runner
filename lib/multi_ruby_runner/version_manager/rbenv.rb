@@ -4,32 +4,33 @@ class MultiRubyRunner
     # Represents the [rbenv](https://github.com/rbenv/rbenv) ruby version manager.
     class Rbenv < VersionManager
 
-      # Returns the string to be executed in shell to activate self in a shell.
-      # @return [String]
-      def activation_string
-        %(eval "$(rbenv init -)")
+      # See MultiRubyRunner#execute_command_in_directory
+      # @return [Hash]
+      #     {
+      #       entire_command: includes shell invocation,
+      #                       ruby version manager activation and command
+      #       blocking: Boolean
+      #       environment_overrides: {}
+      #     }
+      def compute_process_args(command_string, directory, options)
+        shell_command_string = [
+          "cd #{ directory }", # cd into the directory containing .ruby-version file
+          command_string, # execute command
+        ].join('; ')
+        # For rbenv we just have to reset RBENV_VERSION and override RBENV_DIR
+        # to get the ruby environment specified in `.ruby-version` in directory.
+        {
+          entire_command: [
+            options[:shell_invocation],
+            shell_command_string,
+          ].join(' '),
+          blocking: options[:blocking],
+          environment_overrides: {
+            'RBENV_VERSION' => nil,
+            'RBENV_DIR' => directory,
+          },
+        }
       end
-
-      # This is what `rbenv init -` returns:
-
-      # export PATH="/home/deploy/.rbenv/shims:${PATH}"
-      # export RBENV_SHELL=bash
-      # source '/home/deploy/.rbenv/libexec/../completions/rbenv.bash'
-      # command rbenv rehash 2>/dev/null
-      # rbenv() {
-      #   local command
-      #   command="$1"
-      #   if [ "$#" -gt 0 ]; then
-      #     shift
-      #   fi
-
-      #   case "$command" in
-      #   rehash|shell)
-      #     eval "$(rbenv "sh-$command" "$@")";;
-      #   *)
-      #     command rbenv "$command" "$@";;
-      #   esac
-      # }
 
     end
 
