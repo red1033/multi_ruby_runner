@@ -1,3 +1,7 @@
+### 1.0.2
+
+* Fixed rbenv implementation
+
 ### 1.0.1
 
 * Added rbenv support
