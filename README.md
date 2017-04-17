@@ -66,12 +66,13 @@ Note that we’re passing `argument1` and `argument2` as positional arguments to
 
 ### Non blocking (with fork)
 
-If you just want to start a process and return back to the caller right away, you can set the `:fork` option to true. In that case you will get the child process’ PID as return value. This is useful if you want to start a service and communicate with it e.g., via `Sockets`.
+If you just want to start a process and return back to the caller right away, you can set the `:blocking` option to false. In that case you will get the child process’ PID as return value. This is useful if you want to start a service and communicate with it e.g., via `Sockets`.
 
     mrr = MultiRubyRunner.new
     child_pid = mrr.execute_command_in_directory(
       "./bin/ruby-script-to-execute argument1 argument2",
-      "/path/to/folder/that/sets/ruby/env"
+      "/path/to/folder/that/sets/ruby/env",
+      blocking: false
     )
 
 You can communicate with the child process via pipes or sockets.
