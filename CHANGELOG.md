@@ -1,3 +1,7 @@
+### 1.0.3
+
+* Added option to pass in a ruby engine invocation for scenarios where no ruby version manager is present (e.g., in Docker)
+
 ### 1.0.2
 
 * Fixed rbenv implementation
