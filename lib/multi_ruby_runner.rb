@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 require "multi_ruby_runner/version"
 require 'multi_ruby_runner/version_manager'
 require 'multi_ruby_runner/version_manager/none'
@@ -21,7 +19,10 @@ class MultiRubyRunner
   # @param directory [String] the dir containing the ".ruby-version" file
   # @param options [Hash, optional]
   # @option options [String, optional] shell_invocation what shell to use, defaults to bash
-  # @option options [Boolean, optional] blocking, defaults to true.
+  # @option options [Boolean, optional] blocking defaults to true.
+  # @option options [String, optional] ruby_engine_invocation_override
+  #   Can be used when no Ruby version manager is present, e.g., in a docker install.
+  #   Example: "jruby -S "
   # @return [String, Integer, Nil] STDOUT output when blocking, pid when non-blocking.
   def execute_command_in_directory(command_string, directory, options = {})
     shell_path = ENV['SHELL'] || '/bin/bash'
@@ -75,7 +76,7 @@ protected
       stdout_str
     else
       # Raise exception
-      raise "Command failed with status #{ status.inspect }. stderr: #{ stderr_str }"
+      raise "Command failed with status #{ status.inspect }. stderr: #{ stderr_str.inspect }"
     end
   end
 
