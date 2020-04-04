@@ -65,7 +65,7 @@ protected
 
   def execute_blocking_command(process_args)
     stdout_str = stderr_str = status = nil
-    Bundler.with_clean_env do
+    Bundler.with_unbundled_env do
       stdout_str, stderr_str, status = Open3.capture3(
         process_args[:environment_overrides],
         process_args[:entire_command]
@@ -82,7 +82,7 @@ protected
 
   def execute_non_blocking_command(process_args)
     pid = nil
-    Bundler.with_clean_env do
+    Bundler.with_unbundled_env do
       pid = Process.spawn(
         process_args[:environment_overrides],
         process_args[:entire_command]

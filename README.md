@@ -82,15 +82,15 @@ You can communicate with the child process via pipes or sockets.
 Here is an example Ruby script that can be called via MultiRubyRunner:
 
     #!/usr/bin/env ruby
-    
+
     # This is an example callee script for MultiRubyRunner
-    
+
     require_relative '../lib/path/to/your/ruby/code'
-    
+
     # Check for arguments
     arg1 = ARGV[0]
     arg2 = ARGV[1]
-    
+
     # Puts will return some text to STDOUT
     puts "The current time is #{ Time.now }"
 
