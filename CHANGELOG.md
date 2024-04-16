@@ -1,3 +1,7 @@
+### 1.0.5
+
+* Fixed Ruby Version Manager detection under Linux.
+
 ### 1.0.4
 
 * Replaced `Bundler.with_clean_env` with `Bundler.with_unbundled_env`
