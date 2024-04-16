@@ -6,7 +6,7 @@
 * Update `CHANGELOG.md`.
 * Update the gem version in `lib/multi_ruby_runner/version.rb`.
 * Commit version bump and changelog with message ‘Bumped version to x.y.z’.
-* Run `rake release`. This will perform the following steps:
+* Run `bundle exec rake release`. This will perform the following steps:
     * Build a gem package to e.g. pkg/multi_ruby_runner-1.0.1.gem.
     * Push the `.gem` package to `Rubygems.org`
     * Add and push a tag like “v1.0.1” to git.
