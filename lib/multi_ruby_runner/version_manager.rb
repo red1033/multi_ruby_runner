@@ -7,9 +7,9 @@ class MultiRubyRunner
     def self.detect
       which_ruby = `which ruby`
       case which_ruby
-      when /\/\.*rbenv\//
+      when /\/\.?rbenv\//
         Rbenv.new(which_ruby)
-      when /\/\.*rvm\//
+      when /\/\.?rvm\//
         Rvm.new(which_ruby)
       else
         None.new(which_ruby)
